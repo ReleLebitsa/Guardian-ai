@@ -25,6 +25,7 @@ const ThreatAlerts = ({ navigate }) => {
 
   return (
     <AppShell active="dashboard" navigate={navigate}>
+      <BackButton navigate={navigate} />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 18 }}>
         <div>
           <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.25em', color: 'var(--gold-500)' }}>/ ALERTS</div>
@@ -148,6 +149,7 @@ const TimelineCategory = ({ title, count, badgeTone, events, defaultOpen = false
 
 const AttackTimelines = ({ navigate }) => (
   <AppShell active="dashboard" navigate={navigate}>
+    <BackButton navigate={navigate} />
     <div style={{ marginBottom: 22 }}>
       <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.25em', color: 'var(--gold-500)' }}>/ TIMELINES</div>
       <h1 className="gai-display" style={{ fontSize: 44, margin: '4px 0 0', lineHeight: 1 }}>Attack Timelines</h1>
@@ -208,6 +210,7 @@ const LinkChecker = ({ navigate }) => {
 
   return (
     <AppShell active="dashboard" navigate={navigate}>
+      <BackButton navigate={navigate} />
       <div style={{ marginBottom: 22 }}>
         <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.25em', color: 'var(--gold-500)' }}>/ LINK CHECKER</div>
         <h1 className="gai-display" style={{ fontSize: 44, margin: '4px 0 0', lineHeight: 1 }}>Link Checker</h1>
@@ -316,6 +319,7 @@ const TipCard = ({ icon, kicker, title }) => (
 
 const SecurityTips = ({ navigate }) => (
   <AppShell active="dashboard" navigate={navigate}>
+    <BackButton navigate={navigate} />
     <div style={{ marginBottom: 22 }}>
       <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.25em', color: 'var(--gold-500)' }}>/ TIPS</div>
       <h1 className="gai-display" style={{ fontSize: 44, margin: '4px 0 0', lineHeight: 1 }}>Security Tips</h1>

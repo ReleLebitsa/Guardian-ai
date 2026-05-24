@@ -377,9 +377,22 @@ const SectionHead = ({ num, title, sub, action }) => (
 );
 
 // ───────────────────────────────────────────────────────────
+// Back button — navigates to dashboard
+// ───────────────────────────────────────────────────────────
+const BackButton = ({ navigate }) => (
+  <button
+    className="gai-btn gai-btn-ghost gai-btn-sm"
+    onClick={() => navigate && navigate('dashboard')}
+    style={{ marginBottom: 18, alignSelf: 'flex-start' }}
+  >
+    ← Back to Dashboard
+  </button>
+);
+
+// ───────────────────────────────────────────────────────────
 // Export to window so other Babel scripts can use them
 // ───────────────────────────────────────────────────────────
 Object.assign(window, {
   Sigil, Logo, Sidebar, TopBar, AppShell, CenterShell,
-  StepDots, CheckItem, KPI, SectionHead, NavIcon,
+  StepDots, CheckItem, KPI, SectionHead, NavIcon, BackButton,
 });

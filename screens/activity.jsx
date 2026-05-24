@@ -43,6 +43,7 @@ const ActivityLog = ({ navigate }) => {
   return (
     <>
       <AppShell active="activity" navigate={navigate}>
+        <BackButton navigate={navigate} />
         {/* Title row */}
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18 }}>
           <div>
