@@ -196,14 +196,14 @@ const AttackTimelines = ({ navigate }) => (
 // ─── Page 3 — Link Checker ───────────────────────────────────
 const LinkChecker = ({ navigate }) => {
   const findings = [
-    'Spoof of kloofcoffee.co.za',
+    'Spoofs Standard Bank\'s official online banking domain',
     'Listed on 3 phishing blocklists',
     'SSL cert issued 2 days ago',
     'Final hop loads credential-harvesting form',
   ];
   const recent = [
     { url: 'shopify-payments.com',     who: 'Naledi',  verdict: 'SAFE',      tone: 'gold',  time: '21:14' },
-    { url: 'kloof-secure-pay.co.za',   who: 'Sipho',   verdict: 'MALICIOUS', tone: 'warn',  time: '22:14' },
+    { url: 'standardbank-online-secure.ru', who: 'Sipho', verdict: 'MALICIOUS', tone: 'warn', time: '22:14' },
     { url: 'docs.google.com/...abc',   who: 'Naledi',  verdict: 'SAFE',      tone: 'gold',  time: '17:02' },
     { url: 'tinyurl.com/m3xz9',        who: 'Thandi',  verdict: 'SUSPECT',   tone: 'live',  time: '14:08' },
   ];
@@ -226,7 +226,7 @@ const LinkChecker = ({ navigate }) => {
         }}>
           <span className="gai-mono" style={{ fontSize: 11, color: 'var(--gold-500)', letterSpacing: '.15em' }}>HTTPS://</span>
           <input
-            defaultValue="kloof-secure-pay.co.za"
+            defaultValue="standardbank-online-secure.ru"
             style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', color: 'var(--stellar-50)', fontFamily: '"JetBrains Mono", monospace', fontSize: 14, letterSpacing: '.02em' }}
           />
           <button className="gai-btn gai-btn-primary">⟶ Scan</button>
@@ -242,7 +242,7 @@ const LinkChecker = ({ navigate }) => {
             <span className="gai-mono" style={{ fontSize: 11, color: 'var(--stellar-300)', letterSpacing: '.15em' }}>SCANNED · 22:14 SAST</span>
           </div>
           <h2 className="gai-display" style={{ fontSize: 32, margin: '12px 0 4px', color: 'var(--plasma-400)' }}>"Don't open this"</h2>
-          <div className="gai-mono" style={{ fontSize: 13, color: 'var(--stellar-100)', letterSpacing: '.02em' }}>kloof-secure-pay.co.za</div>
+          <div className="gai-mono" style={{ fontSize: 13, color: 'var(--stellar-100)', letterSpacing: '.02em' }}>standardbank-online-secure.ru</div>
 
           <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div style={{ padding: 12, border: '1px solid rgba(244,220,160,.12)', borderRadius: 6 }}>
@@ -255,7 +255,7 @@ const LinkChecker = ({ navigate }) => {
             </div>
             <div style={{ padding: 12, border: '1px solid rgba(244,220,160,.12)', borderRadius: 6 }}>
               <div className="gai-label">Hosted in</div>
-              <div className="gai-display" style={{ fontSize: 20, color: 'var(--stellar-50)', lineHeight: 1.2, marginTop: 4 }}>Bulgaria</div>
+              <div className="gai-display" style={{ fontSize: 20, color: 'var(--stellar-50)', lineHeight: 1.2, marginTop: 4 }}>Russia</div>
             </div>
             <div style={{ padding: 12, border: '1px solid rgba(244,220,160,.12)', borderRadius: 6 }}>
               <div className="gai-label">Redirect chain</div>
@@ -320,63 +320,193 @@ const TipCard = ({ icon, kicker, title }) => (
 const SecurityTips = ({ navigate }) => (
   <AppShell active="dashboard" navigate={navigate}>
     <BackButton navigate={navigate} />
-    <div style={{ marginBottom: 22 }}>
+
+    <div style={{ marginBottom: 14 }}>
       <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.25em', color: 'var(--gold-500)' }}>/ TIPS</div>
       <h1 className="gai-display" style={{ fontSize: 44, margin: '4px 0 0', lineHeight: 1 }}>Security Tips</h1>
       <p style={{ color: 'var(--stellar-200)', fontSize: 13, marginTop: 4 }}>Daily briefing for your team.</p>
     </div>
 
-    {/* Featured */}
-    <div className="gai-card rim" style={{ padding: 28, display: 'grid', gridTemplateColumns: '1fr 240px', gap: 28, alignItems: 'center' }}>
+    {/* Ahead of the curve banner */}
+    <div className="gai-card rim" style={{ padding: 22, marginBottom: 14, display: 'flex', alignItems: 'center', gap: 20 }}>
+      <div style={{ width: 44, height: 44, borderRadius: 8, border: '1px solid rgba(244,220,160,.3)', background: 'rgba(212,162,74,.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <svg width="22" height="22" viewBox="0 0 22 22"><polyline points="2,16 8,10 13,14 20,6" fill="none" stroke="#d4a24a" strokeWidth="1.8" strokeLinejoin="round"/><polyline points="16,6 20,6 20,10" fill="none" stroke="#d4a24a" strokeWidth="1.8" strokeLinejoin="round"/></svg>
+      </div>
+      <div style={{ flex: 1 }}>
+        <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)', marginBottom: 4 }}>GUARDIAN AI · INTELLIGENCE BRIEFING</div>
+        <div className="gai-display" style={{ fontSize: 22, lineHeight: 1.1 }}>Keeping your business ahead of the curve</div>
+        <div style={{ fontSize: 13, color: 'var(--stellar-200)', marginTop: 6, lineHeight: 1.5 }}>
+          Cyber threats evolve every day. This briefing pulls live threat intelligence, certified training paths, and recognised professional standards so your team stays one step ahead — always.
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0 }}>
+        <span className="gai-badge gold"><span className="gai-dot"></span>Proactive Defence</span>
+        <span className="gai-badge live"><span className="gai-dot"></span>Updated Daily</span>
+      </div>
+    </div>
+
+    {/* Featured tip */}
+    <div className="gai-card rim" style={{ padding: 28, display: 'grid', gridTemplateColumns: '1fr 200px', gap: 28, alignItems: 'center' }}>
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
           <span className="gai-badge live"><span className="gai-dot"></span>Today's Tip</span>
-          <span className="gai-mono" style={{ fontSize: 11, letterSpacing: '.18em', color: 'var(--stellar-300)' }}>23 MAY 2026 · 06:00 SAST</span>
+          <span className="gai-mono" style={{ fontSize: 11, letterSpacing: '.18em', color: 'var(--stellar-300)' }}>24 MAY 2026 · 06:00 SAST</span>
         </div>
-        <h2 className="gai-display" style={{
-          fontSize: 38, margin: 0, lineHeight: 1,
-          background: 'var(--grad-gold)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent',
-        }}>
+        <h2 className="gai-display" style={{ fontSize: 38, margin: 0, lineHeight: 1, background: 'var(--grad-gold)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>
           Check every link<br />before you click it
         </h2>
         <p style={{ fontSize: 15, color: 'var(--stellar-100)', marginTop: 14, maxWidth: 540, lineHeight: 1.55 }}>
-          Phishing domains often look almost identical to the real thing. Paste any link you didn't expect
-          into our Link Checker — it takes 2 seconds and could save your business.
+          Phishing domains often look almost identical to the real thing. Paste any link you didn't expect into our Link Checker — it takes 2 seconds and could save your business.
         </p>
         <div style={{ marginTop: 18, display: 'flex', gap: 12 }}>
           <button className="gai-btn gai-btn-primary" onClick={() => navigate && navigate('link-checker')}>⟶ Open Link Checker</button>
           <button className="gai-btn gai-btn-ghost">Share with team</button>
         </div>
       </div>
-      <div style={{ aspectRatio: '1/1', position: 'relative', maxWidth: 240, justifySelf: 'end' }}>
-        <Sigil size={200} glow />
+      <div style={{ justifySelf: 'end' }}><Sigil size={180} glow /></div>
+    </div>
+
+    {/* Recent attacks in SA */}
+    <SectionHead num="THREAT INTEL" title="Recent Attacks in South Africa" sub="Stay aware of what's happening in your region — sourced from ITWeb." />
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+      <a href="https://www.itweb.co.za/article/stats-sa-confirms-data-breach-as-hackers-demand-r17m-ransom/JBwErvn3wpo76Db2" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+        <div className="gai-card" style={{ padding: 22, height: '100%', borderColor: 'rgba(255,104,104,.35)', background: 'linear-gradient(180deg, rgba(255,59,59,.06), rgba(0,0,0,.3))', cursor: 'pointer', boxSizing: 'border-box' }}>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 12 }}>
+            <span className="gai-badge warn"><span className="gai-dot"></span>Data Breach</span>
+            <span className="gai-mono" style={{ fontSize: 10, color: 'var(--stellar-300)', letterSpacing: '.18em' }}>ITWEB · SA</span>
+          </div>
+          <div className="gai-display" style={{ fontSize: 22, color: 'var(--plasma-400)', lineHeight: 1.1, marginBottom: 10 }}>Stats SA Confirms Data Breach — Hackers Demand R17m Ransom</div>
+          <p style={{ fontSize: 13, color: 'var(--stellar-200)', lineHeight: 1.55, margin: 0 }}>
+            Statistics South Africa confirmed a significant breach. Threat actors exfiltrated sensitive government data and demanded R17 million. A reminder that no organisation is too large or too public to be targeted.
+          </p>
+          <div className="gai-mono" style={{ marginTop: 14, fontSize: 10, letterSpacing: '.18em', color: 'var(--plasma-400)' }}>READ ON ITWEB →</div>
+        </div>
+      </a>
+      <a href="https://www.itweb.co.za/videos/WnxpE74Y6dZMV8XL" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+        <div className="gai-card" style={{ padding: 22, height: '100%', borderColor: 'rgba(255,138,61,.35)', background: 'linear-gradient(180deg, rgba(255,106,31,.06), rgba(0,0,0,.3))', cursor: 'pointer', boxSizing: 'border-box' }}>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 12 }}>
+            <span className="gai-badge live"><span className="gai-dot"></span>Video Briefing</span>
+            <span className="gai-mono" style={{ fontSize: 10, color: 'var(--stellar-300)', letterSpacing: '.18em' }}>ITWEB · CYBER</span>
+          </div>
+          <div style={{ height: 72, background: 'rgba(0,0,0,.4)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14, border: '1px solid rgba(255,138,61,.2)' }}>
+            <div style={{ width: 38, height: 38, borderRadius: '50%', background: 'rgba(255,106,31,.2)', border: '1px solid rgba(255,138,61,.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="13" height="15" viewBox="0 0 13 15"><polygon points="1,1 12,7.5 1,14" fill="#ff8a3d"/></svg>
+            </div>
+          </div>
+          <div className="gai-display" style={{ fontSize: 22, color: 'var(--ember-300)', lineHeight: 1.1, marginBottom: 10 }}>ITWeb Cyber Security Video Briefing</div>
+          <p style={{ fontSize: 13, color: 'var(--stellar-200)', lineHeight: 1.55, margin: 0 }}>
+            Expert commentary on the latest threats and trends. What South African businesses need to know to stay protected in an evolving threat landscape.
+          </p>
+          <div className="gai-mono" style={{ marginTop: 14, fontSize: 10, letterSpacing: '.18em', color: 'var(--ember-400)' }}>WATCH ON ITWEB →</div>
+        </div>
+      </a>
+    </div>
+
+    {/* Train your team */}
+    <SectionHead num="TRAINING" title="Train Your Team" sub="Certified platforms trusted by security professionals worldwide." />
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+      {[
+        {
+          href: 'https://www.microsoft.com/en-us/security/business',
+          kicker: 'Business Security',
+          title: 'Microsoft Security for Business',
+          desc: 'End-to-end security tools and training for SMBs. Protect email, devices, identities, and data from modern threats.',
+          icon: <svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8.5" height="8.5" fill="#f25022"/><rect x="10.5" y="1" width="8.5" height="8.5" fill="#7fba00"/><rect x="1" y="10.5" width="8.5" height="8.5" fill="#00a4ef"/><rect x="10.5" y="10.5" width="8.5" height="8.5" fill="#ffb900"/></svg>,
+        },
+        {
+          href: 'https://www.comptia.org/certifications/security',
+          kicker: 'Certification',
+          title: 'CompTIA Security+',
+          desc: 'Industry-standard certification for employees. Covers threat management, cryptography, and risk mitigation.',
+          icon: <svg width="20" height="20" viewBox="0 0 20 20"><rect x="2" y="4" width="16" height="12" rx="2" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><path d="M7 10 L9 12 L13 8" stroke="#d4a24a" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+        },
+        {
+          href: 'https://www.sans.org/security-awareness-training/',
+          kicker: 'Awareness Training',
+          title: 'SANS Security Awareness',
+          desc: 'World-class programmes that build a human-centred defence layer. Reduces your biggest attack surface: your people.',
+          icon: <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><path d="M10 5 L10 10 L13 13" stroke="#d4a24a" strokeWidth="1.5" fill="none" strokeLinecap="round"/></svg>,
+        },
+      ].map((r, i) => (
+        <a key={i} href={r.href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+          <div className="gai-card" style={{ padding: 18, cursor: 'pointer', height: '100%', boxSizing: 'border-box' }}>
+            <div style={{ width: 40, height: 40, borderRadius: 8, border: '1px solid rgba(244,220,160,.3)', background: 'rgba(212,162,74,.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>{r.icon}</div>
+            <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)' }}>{r.kicker.toUpperCase()}</div>
+            <div className="gai-display" style={{ fontSize: 17, marginTop: 6, lineHeight: 1.2 }}>{r.title}</div>
+            <div style={{ fontSize: 12, color: 'var(--stellar-300)', marginTop: 8, lineHeight: 1.5 }}>{r.desc}</div>
+            <div className="gai-mono" style={{ marginTop: 12, fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)' }}>VISIT →</div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {/* Professional bodies */}
+    <SectionHead num="BODIES" title="Professional Bodies" sub="Stay connected to the standards bodies that define the industry." />
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+      <a href="https://www.iitpsa.org.za/overview-2/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+        <div className="gai-card" style={{ padding: 22, cursor: 'pointer', height: '100%', boxSizing: 'border-box' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
+            <div style={{ width: 44, height: 44, borderRadius: 8, border: '1px solid rgba(244,220,160,.3)', background: 'rgba(212,162,74,.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3 L19 7 L19 15 L11 19 L3 15 L3 7 Z" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><circle cx="11" cy="11" r="3" fill="none" stroke="#d4a24a" strokeWidth="1.2"/></svg>
+            </div>
+            <div>
+              <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)' }}>SOUTH AFRICA · PROFESSIONAL BODY</div>
+              <div className="gai-display" style={{ fontSize: 22, lineHeight: 1 }}>IITPSA</div>
+            </div>
+          </div>
+          <div style={{ fontSize: 13, color: 'var(--stellar-200)', lineHeight: 1.6 }}>
+            The Institute of Information Technology Professionals South Africa is the recognised professional body for IT practitioners in SA. Membership demonstrates commitment to ethics, competence, and continuous professional development.
+          </div>
+          <div className="gai-mono" style={{ marginTop: 14, fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)' }}>EXPLORE MEMBERSHIP →</div>
+        </div>
+      </a>
+      <div className="gai-card" style={{ padding: 22, border: '1px solid rgba(244,220,160,.2)', background: 'rgba(212,162,74,.04)' }}>
+        <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)', marginBottom: 10 }}>WHY IT MATTERS</div>
+        <div className="gai-display" style={{ fontSize: 20, lineHeight: 1.1, marginBottom: 14 }}>Professional recognition protects your business</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {[
+            'Ensures your IT team meets verified competency standards',
+            'Access to peer networks and threat-sharing communities',
+            'Signals trustworthiness to clients, partners, and insurers',
+            'Supports POPIA and regulatory compliance frameworks',
+          ].map((item, i) => (
+            <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gold-500)', marginTop: 5, flexShrink: 0 }}></div>
+              <div style={{ fontSize: 13, color: 'var(--stellar-100)', lineHeight: 1.5 }}>{item}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
 
-    {/* Tip grid */}
+    {/* Snode resources */}
+    <SectionHead num="RESOURCES" title="From Snode" sub="Expert white papers and research from South Africa's cyber intelligence leaders."
+      action={<a href="https://snode.co.za/resources" target="_blank" rel="noopener noreferrer" className="gai-btn gai-btn-ghost gai-btn-sm" style={{ textDecoration: 'none' }}>All resources →</a>} />
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+      {[
+        { title: 'Quantum Computing Risk', kicker: 'White Paper', desc: 'How quantum computing reshapes encryption and what organisations must do to prepare now.', date: '11 Jan 2024' },
+        { title: 'Cyber Intelligence Analysis', kicker: 'White Paper', desc: 'Critical insights into advanced persistent threats targeting South African businesses.', date: '20 Aug 2021' },
+        { title: 'Data Breaches & Malware', kicker: 'White Paper', desc: 'A cautionary guide for cyber security in the South African business context.', date: '30 Jul 2021' },
+      ].map((r, i) => (
+        <a key={i} href="https://snode.co.za/resources" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block' }}>
+          <div className="gai-card" style={{ padding: 18, cursor: 'pointer', height: '100%', boxSizing: 'border-box' }}>
+            <div className="gai-mono" style={{ fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)' }}>{r.kicker.toUpperCase()} · {r.date}</div>
+            <div className="gai-display" style={{ fontSize: 17, marginTop: 8, lineHeight: 1.2 }}>{r.title}</div>
+            <div style={{ fontSize: 12, color: 'var(--stellar-300)', marginTop: 8, lineHeight: 1.5 }}>{r.desc}</div>
+            <div className="gai-mono" style={{ marginTop: 12, fontSize: 10, letterSpacing: '.22em', color: 'var(--gold-500)' }}>DOWNLOAD →</div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {/* Tips grid */}
     <SectionHead num="LIBRARY" title="More tips" sub="One-line rules your whole team can remember."
       action={<button className="gai-btn gai-btn-ghost gai-btn-sm">All 24 tips →</button>} />
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
-      <TipCard
-        kicker="Files"
-        title="Never run a file from a chat you weren't expecting"
-        icon={<svg width="20" height="20" viewBox="0 0 20 20"><rect x="4" y="2" width="9" height="14" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><polyline points="11,2 11,5 14,5" fill="none" stroke="#d4a24a" strokeWidth="1.5"/></svg>}
-      />
-      <TipCard
-        kicker="Passwords"
-        title="Use a 14-character passphrase, never reuse across sites"
-        icon={<svg width="20" height="20" viewBox="0 0 20 20"><circle cx="7" cy="10" r="3" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><line x1="10" y1="10" x2="17" y2="10" stroke="#d4a24a" strokeWidth="1.5"/><line x1="14" y1="10" x2="14" y2="13" stroke="#d4a24a" strokeWidth="1.5"/><line x1="17" y1="10" x2="17" y2="13" stroke="#d4a24a" strokeWidth="1.5"/></svg>}
-      />
-      <TipCard
-        kicker="Updates"
-        title="Restart your devices weekly — patches need a reboot to land"
-        icon={<svg width="20" height="20" viewBox="0 0 20 20"><path d="M4 10 A6 6 0 0 1 16 10" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><polyline points="16,5 16,10 11,10" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><path d="M16 10 A6 6 0 0 1 4 10" fill="none" stroke="#d4a24a" strokeWidth="1.5" opacity=".5"/></svg>}
-      />
-      <TipCard
-        kicker="Devices"
-        title="Lock your screen every time you walk away"
-        icon={<svg width="20" height="20" viewBox="0 0 20 20"><rect x="5" y="9" width="10" height="9" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><path d="M7 9 V6 A3 3 0 0 1 13 6 V9" fill="none" stroke="#d4a24a" strokeWidth="1.5"/></svg>}
-      />
+      <TipCard kicker="Files" title="Never run a file from a chat you weren't expecting" icon={<svg width="20" height="20" viewBox="0 0 20 20"><rect x="4" y="2" width="9" height="14" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><polyline points="11,2 11,5 14,5" fill="none" stroke="#d4a24a" strokeWidth="1.5"/></svg>} />
+      <TipCard kicker="Passwords" title="Use a 14-character passphrase, never reuse across sites" icon={<svg width="20" height="20" viewBox="0 0 20 20"><circle cx="7" cy="10" r="3" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><line x1="10" y1="10" x2="17" y2="10" stroke="#d4a24a" strokeWidth="1.5"/><line x1="14" y1="10" x2="14" y2="13" stroke="#d4a24a" strokeWidth="1.5"/><line x1="17" y1="10" x2="17" y2="13" stroke="#d4a24a" strokeWidth="1.5"/></svg>} />
+      <TipCard kicker="Updates" title="Restart your devices weekly — patches need a reboot to land" icon={<svg width="20" height="20" viewBox="0 0 20 20"><path d="M4 10 A6 6 0 0 1 16 10" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><polyline points="16,5 16,10 11,10" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><path d="M16 10 A6 6 0 0 1 4 10" fill="none" stroke="#d4a24a" strokeWidth="1.5" opacity=".5"/></svg>} />
+      <TipCard kicker="Devices" title="Lock your screen every time you walk away" icon={<svg width="20" height="20" viewBox="0 0 20 20"><rect x="5" y="9" width="10" height="9" fill="none" stroke="#d4a24a" strokeWidth="1.5"/><path d="M7 9 V6 A3 3 0 0 1 13 6 V9" fill="none" stroke="#d4a24a" strokeWidth="1.5"/></svg>} />
     </div>
   </AppShell>
 );

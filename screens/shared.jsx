@@ -249,9 +249,9 @@ const TopBar = ({ subtitle }) => (
         background: 'linear-gradient(135deg, #d4a24a, #7a5519)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         color: 'var(--void-950)', fontFamily: '"Big Shoulders Display"', fontWeight: 800, fontSize: 14,
-      }}>KC</div>
+      }}>TL</div>
       <div>
-        <div className="gai-display" style={{ fontSize: 13, lineHeight: 1 }}>Kloof Coffee House</div>
+        <div className="gai-display" style={{ fontSize: 13, lineHeight: 1 }}>Thobela Logistics</div>
         <div className="gai-mono" style={{ fontSize: 9, letterSpacing: '.2em', color: 'var(--stellar-300)', marginTop: 2 }}>OWNER · ACCOUNT</div>
       </div>
     </div>
